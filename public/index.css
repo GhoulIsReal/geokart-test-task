@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: HelveticaNeueCyr;
+    src: url('./fonts/HelveticaNeueCyr-Medium.ttf') format('truetype'),
+        url('./fonts/HelveticaNeueCyr-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: HelveticaNeueCyrBold;
+    src: url('./fonts/HelveticaNeueCyr-Bold.ttf') format('truetype'),
+        url('./fonts/HelveticaNeueCyr-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}

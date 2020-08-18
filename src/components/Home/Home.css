@@ -1,0 +1,10 @@
+.home {
+  width: 100vw;
+  display: flex;
+}
+
+.header-contacts-holder {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 2;
+}
