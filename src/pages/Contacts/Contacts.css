@@ -1,0 +1,6 @@
+.contacts {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 2;
+  position: relative;
+}

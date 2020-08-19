@@ -7,24 +7,12 @@ export default {
     });
   },
 
-  createContact(name, surname, phone, email, address) {
-    return axios.post("/create", {
-      name: name,
-      surname: surname,
-      phone: phone,
-      email: email,
-      address: address,
-    });
+  createContact(payload) {
+    return axios.post("/create", payload);
   },
 
-  editContact(id, name, surname, phone, email, address) {
-    return axios.post("/update/" + id, {
-      name: name,
-      surname: surname,
-      phone: phone,
-      email: email,
-      address: address,
-    });
+  editContact(id, payload) {
+    return axios.post("/update/" + id, payload);
   },
 
   deleteContact(id) {

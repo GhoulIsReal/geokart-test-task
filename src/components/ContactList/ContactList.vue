@@ -26,12 +26,16 @@
           </tr>
         </tbody>
       </table>
-      <button v-on:click="formAction = 'addContact'" class="add-button">
-        Add contact
+      <button
+        @click="(formAction = 'addContact'), (form = {})"
+        class="add-button"
+      >
+        Новый Контакт
       </button>
     </div>
     <div class="add-contact-field" v-if="formAction">
-      <p>Добавление нового контакта</p>
+      <p v-if="(formAction == 'addContact')">Добавление нового контакта</p>
+      <p v-else>Редактирование контакта</p>
       <form v-on:submit.prevent="checkState">
         <input
           required
@@ -72,16 +76,21 @@
           <button type="button" v-on:click="formAction = ''">
             Закрыть
           </button>
-          <input type="submit" value="Добавить" />
+          <input type="submit" value="Сохранить" />
         </div>
       </form>
+    </div>
+    <div class="loader" v-if="status == 'loading'"></div>
+    <div class="success" v-if="status == 'success'">Сохранено!</div>
+    <div class="error" v-if="status == 'error'">
+      Opps, попробуйте позже!
     </div>
   </div>
 </template>
 
 <script>
 import "./ContactList.css";
-import axios from "axios";
+import ContactsAPI from "@/services/Contacts.js";
 
 export default {
   name: "ContactList",
@@ -89,6 +98,7 @@ export default {
     return {
       contacts: null,
       formAction: "",
+      status: "",
       form: {
         id: "",
         name: "",
@@ -100,50 +110,63 @@ export default {
     };
   },
   methods: {
+    loadData() {
+      ContactsAPI.getContacts().then((res) => {
+        this.contacts = res;
+      });
+    },
     create() {
-      axios
-        .post("/create", {
-          name: this.form.name,
-          surname: this.form.surname,
-          phone: this.form.phone,
-          email: this.form.email,
-          address: this.form.address,
-        })
+      this.status = "loading";
+      const paylod = {
+        name: this.form.name,
+        surname: this.form.surname,
+        phone: this.form.phone,
+        email: this.form.email,
+        address: this.form.address,
+      };
+      ContactsAPI.createContact(paylod)
         .then((res) => {
-          if (res) this.formAction = "";
-        });
+          if (res.status == 200) {
+            this.formAction = "";
+            this.form = {};
+            this.status = "success";
+            setTimeout(() => (this.status = ""), 1200);
+          } else {
+            this.status = "error";
+          }
+        })
+        .then(this.loadData);
     },
     showEditing(id) {
-      return function () {
-        this.form.id = id;
-        const editingContact = this.contacts.find(
-          (contact) => contact.id === id
-        );
-        this.form.name = editingContact.name;
-        this.form.surname = editingContact.surname;
-        this.form.phone = editingContact.phone;
-        this.form.email = editingContact.email;
-        this.form.address = editingContact.address;
-        this.formAction = "editContact";
-      }.bind(this)();
+      this.formAction = "editContact";
+      this.form.id = id;
+      const editingContact = this.contacts.find((contact) => contact.id === id);
+      this.form = { ...editingContact };
     },
     edit(id) {
-      axios
-        .post(`/update/${id}`, {
-          name: this.form.name,
-          surname: this.form.surname,
-          phone: this.form.phone,
-          email: this.form.email,
-          address: this.form.address,
-        })
+      this.status = "loading";
+      const payload = {
+        name: this.form.name,
+        surname: this.form.surname,
+        phone: this.form.phone,
+        email: this.form.email,
+        address: this.form.address,
+      };
+      ContactsAPI.editContact(id, payload)
         .then((res) => {
-          if (res) this.formAction = "";
-        });
+          if (res.status == 200) {
+            this.formAction = "";
+            this.form = {};
+            this.status = "success";
+            setTimeout(() => (this.status = ""), 1200);
+          } else {
+            this.status = "error";
+          }
+        })
+        .then(this.loadData);
     },
     deleteContact(id) {
-      axios.get(`/delete/${id}`).then((res) => {
-        if (res) console.log("deleted");
-      });
+      ContactsAPI.deleteContact(id).then(this.loadData);
     },
     checkState() {
       switch (this.formAction) {
@@ -159,9 +182,7 @@ export default {
     },
   },
   mounted() {
-    axios.get("/list").then((res) => {
-      this.contacts = res.data;
-    });
+    this.loadData();
   },
 };
 </script>

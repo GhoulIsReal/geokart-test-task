@@ -1,5 +1,31 @@
-.home {
-  display: flex;
-  flex-flow: column;
-  flex-grow: 2;
+.home-main-content {
+    display: flex;
+    flex-grow: 2;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7fafc;
+}
+
+.home-paragraphs-holder {
+    height: 80%;
+    width: 65%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.home-paragraphs-holder p {
+    margin: 0;
+    text-align: justify;
+    color: rgb(34, 33, 33);
+}
+
+.home-paragraphs-holder hr {
+    width: 50px;
+    border-width: 6px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: rgb(187, 187, 187);
+    margin: 25px auto;
 }

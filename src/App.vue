@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar navbarHeading="Get Contact" />
+    <Navbar />
     <router-view/>
   </div>
 </template>
