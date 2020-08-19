@@ -4,8 +4,8 @@
       <p>{{ navbarHeading }}</p>
     </div>
     <ul class="navbar">
-      <li><a href="">Главная</a></li>
-      <li><a href="">Контакты</a></li>
+      <li><router-link :to="{ name: 'Home' }">Главная</router-link></li>
+      <li><router-link :to="{ name: 'About' }">Контакты</router-link></li>
     </ul>
   </nav>
 </template>

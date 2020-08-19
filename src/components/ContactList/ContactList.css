@@ -1,0 +1,159 @@
+.main-content-table thead tr th,
+.main-content-table tbody tr td {
+  border-bottom-width: 1px;
+  border-color: #e5e7eb;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-align: start;
+}
+
+.main-content-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 2;
+}
+
+.main-content {
+  margin-top: 80px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 65%;
+  height: 40%;
+  background-color: #f7fafc;
+  padding: 2rem;
+}
+
+.main-content-table {
+  width: 100%;
+}
+
+.main-content-table * {
+  border-collapse: collapse;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #343a40;
+}
+
+.main-content-table button:focus {
+  outline: none;
+}
+
+.edit-delete-buttons {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.edit-delete-buttons > button {
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-family: monospace;
+}
+
+.edit-delete-buttons > button:hover {
+  filter: brightness(40%);
+}
+
+.edit-delete-buttons > button:nth-of-type(1) {
+  color: #5850ec;
+}
+
+.edit-delete-buttons > button:nth-of-type(2) {
+  color: #9b1c1c;
+}
+
+.main-content-table thead tr th {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: #f9fafb;
+  font-family: HelveticaNeueCyr;
+}
+
+.main-content-table tbody {
+  background-color: #fff;
+}
+
+.main-content-table tbody tr {
+  border-width: 0;
+  border-style: solid;
+  border-color: #d2d6dc;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+}
+
+.main-content-table tbody tr td {
+  white-space: nowrap;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.add-button {
+  width: 100px;
+  height: 40px;
+  align-self: flex-end;
+  cursor: pointer;
+  font-family: monospace;
+  border: none;
+  color: #03543f;
+  border-radius: 5px;
+  background-color: #def7ec;
+}
+
+.add-button:hover {
+  filter: brightness(70%);
+  transition: all 0.3s ease;
+}
+
+.add-button:focus {
+  outline: none;
+}
+
+.add-contact-field {
+  width: 65%;
+  height: 40%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.add-contact-field form {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 2;
+  margin-top: 20px;
+}
+
+.add-contact-field p {
+  margin: 0;
+}
+
+.add-contact-field > form > input {
+  width: 400px;
+  height: 26px;
+  padding: 2px;
+}
+
+.submit-and-close-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.submit-and-close-buttons * {
+  height: 30px;
+  width: 75px;
+}
