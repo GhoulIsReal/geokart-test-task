@@ -96,10 +96,10 @@ export default {
   name: "ContactList",
   data() {
     return {
-      contacts: null,
-      formAction: "",
-      status: "",
-      form: {
+      contacts: null,  //сохраняет контакты с get запроса в этот стейт
+      formAction: "",  //состояние формы при нажатии на кнопки edit/новый контакт/закрыть
+      status: "",      //состояние анимации колеса при отправке формы
+      form: {          //один определенный контакт
         id: "",
         name: "",
         surname: "",
