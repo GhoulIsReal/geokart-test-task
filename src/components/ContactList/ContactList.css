@@ -17,21 +17,14 @@
 
 .main-content {
   margin-top: 30px;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-between;
   width: 65%;
-  height: 45%;
+  height: auto;
   background-color: #f7fafc;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .main-content-table {
   width: 100%;
-  display: block;
-  max-height: 80%;
-  overflow-y: scroll;
 }
 
 .main-content-table * {
@@ -49,7 +42,7 @@
   display: flex;
   flex-flow: column;
   height: 100%;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .edit-delete-buttons > button {
@@ -71,6 +64,17 @@
   color: #9b1c1c;
 }
 
+.main-content-table thead {
+  width: calc(100% - 1em);
+}
+
+.main-content-table thead tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  width: calc(100% - 1em)
+}
+
 .main-content-table thead tr th {
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -83,6 +87,10 @@
 
 .main-content-table tbody {
   background-color: #fff;
+  width: 100%;
+  height: 200px;
+  overflow: auto;
+  display: block;
 }
 
 .main-content-table tbody tr {
@@ -92,12 +100,15 @@
   border-bottom-width: 1px;
   border-top-width: 1px;
   height: 50px;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
 
 .main-content-table tbody tr td {
-  white-space: nowrap;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  overflow-wrap: break-word;
 }
 
 .add-button {
@@ -110,6 +121,8 @@
   color: #03543f;
   border-radius: 5px;
   background-color: #def7ec;
+  margin-top: 30px;
+  float: right;
 }
 
 .add-button:hover {
@@ -123,7 +136,6 @@
 
 .add-contact-field {
   width: 65%;
-  height: 35%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -159,6 +171,7 @@
   background: #e5e5e5;
   font-family: HelveticaNeueCyr;
   color: #5e6472;
+  margin-bottom: 10px;
 }
 
 .add-contact-field > form > input:focus {
@@ -252,23 +265,23 @@
 
   .main-content-table tbody tr td {
     white-space: nowrap;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 }
 
 @media (min-width: 1600px) {
   .main-content {
     width: 60%;
-    height: 40%;
+  }
+  .add-contact-field > form > input {
+    height: 35px;
+    font-size: 16px;
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 1024px) {
-  .main-content-wrapper {
-    align-items: unset;
-  }
-
   .main-content {
     width: 90%;
   }

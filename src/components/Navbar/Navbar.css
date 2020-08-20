@@ -43,3 +43,13 @@ nav {
   text-decoration: none;
   color: #e5e5e5;
 }
+
+@media (min-width: 1600px) {
+  nav {
+    width: 300px;
+  }
+
+  .navbar-heading {
+    width: 300px;
+  }
+}
