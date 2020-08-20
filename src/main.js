@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://test.rgis.kz/api/contact'
+axios.defaults.baseURL = process.env.VUE_APP_API
 
 Vue.config.productionTip = false
 

@@ -8,8 +8,8 @@
 }
 
 .home-paragraphs-holder {
-    height: 80%;
-    width: 65%;
+    height: 540px;
+    width: 660px;
     display: flex;
     flex-flow: column;
     justify-content: space-between;

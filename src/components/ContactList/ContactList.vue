@@ -111,7 +111,7 @@ export default {
   },
   methods: {
     loadData() {
-      ContactsAPI.getContacts().then((res) => {
+      ContactsAPI.getContacts().then((res) => {   //get запрос на /list для вывода всех сущ. контактов
         this.contacts = res;
       });
     },
@@ -124,7 +124,7 @@ export default {
         email: this.form.email,
         address: this.form.address,
       };
-      ContactsAPI.createContact(paylod)
+      ContactsAPI.createContact(paylod)           //создание нового контакта
         .then((res) => {
           if (res.status == 200) {
             this.formAction = "";
@@ -137,13 +137,13 @@ export default {
         })
         .then(this.loadData);
     },
-    showEditing(id) {
+    showEditing(id) {                             //поиск контакта по id при нажатии на кнопку edit и заполнения их данных в форму
       this.formAction = "editContact";
       this.form.id = id;
       const editingContact = this.contacts.find((contact) => contact.id === id);
       this.form = { ...editingContact };
     },
-    edit(id) {
+    edit(id) {                                   //отправка запроса на изменение
       this.status = "loading";
       const payload = {
         name: this.form.name,
@@ -165,10 +165,10 @@ export default {
         })
         .then(this.loadData);
     },
-    deleteContact(id) {
+    deleteContact(id) {                          //удаление контакта
       ContactsAPI.deleteContact(id).then(this.loadData);
     },
-    checkState() {
+    checkState() {                               //проверка при submit-е формы, какой метод выполнять create/edit
       switch (this.formAction) {
         case "addContact":
           this.create();
@@ -181,7 +181,7 @@ export default {
       }
     },
   },
-  mounted() {
+  mounted() {                           
     this.loadData();
   },
 };
